@@ -1,11 +1,183 @@
-import React, { useState, useEffect, useMemo } from 'react';
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Dezenas da Mega-Sena</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilos adicionais para garantir que os cantos sejam arredondados em todos os elementos */
+        .rounded-lg, .rounded-md, .rounded-xl, .rounded-2xl, .rounded-full {
+            border-radius: 0.5rem; /* Ajuste conforme necessário para o seu design */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 p-4 flex items-center justify-center">
+    <div class="bg-white p-6 md:p-8 rounded-lg shadow-md w-full max-w-4xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
+            Gerador de Dezenas da Mega-Sena
+        </h1>
+        <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">
+            Utilize este aplicativo para gerar dezenas da Mega-Sena com base na frequência de números sorteados em concursos anteriores.
+        </p>
 
-// Main App component for the Mega-Sena number generator
-const App = () => {
-    // State to store the raw input of past draws
-    // Pre-filling with example numbers from previous conversation
-    const [pastDrawsInput, setPastDrawsInput] = useState(
-        `Janeiro/2015
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded mb-6">
+            <p class="font-semibold mb-2">Atenção:</p>
+            <p class="text-sm">
+                A Mega-Sena é um jogo de azar e cada sorteio é independente. Este programa utiliza estatísticas de sorteios passados para sugerir dezenas, mas não há garantia de que números que saíram com frequência no passado continuarão a sair no futuro. Jogue com responsabilidade.
+            </p>
+        </div>
+
+        <div class="mb-6 bg-blue-50 p-5 rounded-lg shadow-inner">
+            <h2 class="text-xl md:text-2xl font-bold text-blue-800 mb-4">
+                Como Usar:
+            </h2>
+            <ol class="list-decimal list-inside text-gray-700 space-y-2">
+                <li>
+                    <span class="font-semibold">Visualize os Sorteios Anteriores:</span> Os resultados dos concursos da Mega-Sena estão pré-carregados na caixa de texto abaixo.
+                </li>
+                <li>
+                    <span class="font-semibold">Filtre por Mês e Ano:</span> Use os seletores de Mês e Ano para focar a análise em um período específico.
+                </li>
+                <li>
+                    <span class="font-semibold">Verifique a Análise de Frequência:</span> O sistema calculará e exibirá os números mais frequentes com base nos dados filtrados.
+                </li>
+                <li>
+                    <span class="font-semibold">Escolha as Opções de Geração:</span> Defina quantos jogos deseja gerar e qual estratégia usar (frequência direta ou ponderada).
+                </li>
+                <li>
+                    <span class="font-semibold">Gere Suas Dezenas:</span> Clique no botão "Gerar Dezenas" para obter suas sugestões.
+                </li>
+            </ol>
+        </div>
+
+        <div class="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
+            <label for="pastDraws" class="block text-gray-700 text-lg font-bold mb-3">
+                1. Resultados dos Sorteios Anteriores:
+            </label>
+            <textarea
+                id="pastDraws"
+                class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 h-60 resize-y"
+                readonly
+            ></textarea>
+            <p id="errorMessage" class="text-red-600 text-sm mt-2 font-medium whitespace-pre-wrap"></p>
+        </div>
+
+        <div class="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                2. Filtrar Sorteios:
+            </h2>
+            <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                <div class="flex-1">
+                    <label for="filterMonth" class="block text-gray-700 text-md font-medium mb-2">
+                        Mês:
+                    </label>
+                    <select
+                        id="filterMonth"
+                        class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
+                    >
+                        <option value="all">Todos os Meses</option>
+                        <option value="01">Janeiro</option>
+                        <option value="02">Fevereiro</option>
+                        <option value="03">Março</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Maio</option>
+                        <option value="06">Junho</option>
+                        <option value="07">Julho</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                </div>
+                <div class="flex-1">
+                    <label for="filterYear" class="block text-gray-700 text-md font-medium mb-2">
+                        Ano:
+                    </label>
+                    <select
+                        id="filterYear"
+                        class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
+                    >
+                        <option value="all">Todos os Anos</option>
+                        </select>
+                </div>
+            </div>
+            <p id="filterMessage" class="text-red-600 text-sm mt-2 font-medium"></p>
+        </div>
+
+        <div id="frequencyAnalysisSection" class="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner hidden">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                3. Análise de Frequência dos Números (Sorteios Filtrados):
+            </h2>
+            <div id="mostCommonNumbersContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                </div>
+            <p id="frequencyDisplayMessage" class="text-gray-600 text-sm mt-3 text-center hidden">
+                Exibindo os 20 números mais frequentes.
+            </p>
+        </div>
+
+        <div id="filteredDrawsDisplaySection" class="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner hidden">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                Sorteios Filtrados:
+            </h2>
+            <div id="filteredDrawsContainer" class="max-h-60 overflow-y-auto border border-gray-300 rounded-md p-3 bg-white">
+                </div>
+        </div>
+
+        <div class="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                4. Opções de Geração:
+            </h2>
+            <div class="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                <div class="flex-1">
+                    <label for="numGames" class="block text-gray-700 text-md font-medium mb-2">
+                        Quantos jogos gerar?
+                    </label>
+                    <input
+                        type="number"
+                        id="numGames"
+                        class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800"
+                        min="1"
+                        max="10"
+                        value="1"
+                    />
+                </div>
+                <div class="flex-1">
+                    <label for="strategy" class="block text-gray-700 text-md font-medium mb-2">
+                        Estratégia de Geração:
+                    </label>
+                    <select
+                        id="strategy"
+                        class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
+                    >
+                        <option value="frequencia">Mais Frequentes (Direta)</option>
+                        <option value="ponderada">Ponderada (Aleatória com Viés)</option>
+                    </select>
+                </div>
+            </div>
+            <button
+                id="generateButton"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300"
+            >
+                Gerar Dezenas
+            </button>
+        </div>
+
+        <div id="generatedGamesSection" class="bg-green-50 p-5 rounded-lg shadow-md border border-green-200 hidden">
+            <h2 class="text-xl md:text-2xl font-bold text-green-800 mb-4">
+                5. Seus Jogos Gerados:
+            </h2>
+            <div id="generatedGamesContainer" class="grid grid-cols-1 gap-4">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // Variáveis globais para armazenar o estado da aplicação
+        let pastDrawsInput = `Janeiro/2015
 
 Concurso: 1666 - 03/01/2015 (Sábado)
 01 02 23 27 45 51
@@ -1197,7 +1369,7 @@ Concurso: 2202 - 26/10/2019 (Sábado)
 11 29 37 38 43 60
 Concurso: 2203 - 30/10/2019 (Quarta)
 17 34 46 49 50 57
-Novembro/2019
+Novembro/2024
 
 Concurso: 2204 - 04/11/2019 (Segunda)
 01 28 29 32 35 56
@@ -2597,439 +2769,366 @@ Concurso: 2865 - 20/05/2025 (Terça)
 Concurso: 2866 - 22/05/2025 (Quinta)
 01 12 17 19 36 60
 Concurso: 2867 - 24/05/2025 (Sábado)
-05 09 15 24 25 60`
-    );
-    // State to store all parsed draws with their dates
-    const [allParsedDraws, setAllParsedDraws] = useState([]);
-    // State to store the filtered draws based on selected month/year
-    const [filteredDraws, setFilteredDraws] = useState([]);
-    // State to store the frequency counts of each number from filtered draws
-    const [frequencyCounts, setFrequencyCounts] = useState([]);
-    // State to store the generated Mega-Sena games
-    const [generatedGames, setGeneratedGames] = useState([]);
-    // State for the number of games to generate
-    const [numGamesToGenerate, setNumGamesToGenerate] = useState(1);
-    // State for the generation strategy ('frequencia' or 'ponderada')
-    const [generationStrategy, setGenerationStrategy] = useState('frequencia');
-    // State for displaying error messages
-    const [errorMessage, setErrorMessage] = useState('');
+05 09 15 24 25 60`;
 
-    // State for month and year filters
-    const [selectedMonth, setSelectedMonth] = useState('all');
-    const [selectedYear, setSelectedYear] = useState('all');
+        // Variáveis globais para armazenar o estado da aplicação
+        let allParsedDraws = [];
+        let filteredDraws = [];
+        let frequencyCounts = [];
+        let generatedGames = [];
+        let numGamesToGenerate = 1;
+        let generationStrategy = 'frequencia';
+        let errorMessage = '';
+        // Inicializa as variáveis de filtro
+        let selectedMonth = 'all';
+        let selectedYear = 'all';
 
-    // Available months for filtering
-    const months = [
-        { value: 'all', label: 'Todos os Meses' },
-        { value: '01', label: 'Janeiro' },
-        { value: '02', label: 'Fevereiro' },
-        { value: '03', label: 'Março' },
-        { value: '04', label: 'Abril' },
-        { value: '05', label: 'Maio' },
-        { value: '06', label: 'Junho' },
-        { value: '07', label: 'Julho' },
-        { value: '08', label: 'Agosto' },
-        { value: '09', label: 'Setembro' },
-        { value: '10', label: 'Outubro' },
-        { value: '11', label: 'Novembro' },
-        { value: '12', label: 'Dezembro' },
-    ];
+        const months = [
+            { value: 'all', label: 'Todos os Meses' },
+            { value: '01', label: 'Janeiro' },
+            { value: '02', label: 'Fevereiro' },
+            { value: '03', label: 'Março' },
+            { value: '04', label: 'Abril' },
+            { value: '05', label: 'Maio' },
+            { value: '06', label: 'Junho' },
+            { value: '07', label: 'Julho' },
+            { value: '08', label: 'Agosto' },
+            { value: '09', label: 'Setembro' },
+            { value: '10', label: 'Outubro' },
+            { value: '11', label: 'Novembro' },
+            { value: '12', label: 'Dezembro' },
+        ];
 
-    /**
-     * Parses the raw input string of past draws into a structured array of objects,
-     * including the date for each draw.
-     * @param {string} input The raw text input from the user.
-     * @returns {Array<{date: Date, numbers: Array<number>}>} An array of objects, each representing a draw.
-     */
-    const parseAllDraws = (input) => {
-        const lines = input.split('\n').map(line => line.trim()).filter(line => line !== '');
-        const draws = [];
-        let currentDate = null;
-        let errors = [];
+        /**
+         * Analisa a string de entrada de sorteios anteriores e a converte em um array de objetos.
+         * Cada objeto contém a data do sorteio e os números sorteados.
+         * @param {string} input A string de texto bruta fornecida pelo utilizador.
+         * @returns {Array<{date: Date, numbers: Array<number>}>} Um array de objetos, cada um representando um sorteio.
+         */
+        function parseAllDraws(input) {
+            const lines = input.split('\n').map(line => line.trim()).filter(line => line !== '');
+            const draws = [];
+            let errors = [];
 
-        for (let i = 0; i < lines.length; i++) {
-            const line = lines[i];
-            // Regex to find the date in "DD/MM/YYYY" format
-            const dateMatch = line.match(/(\d{2}\/\d{2}\/\d{4})/);
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                // Regex para encontrar a data no formato "DD/MM/YYYY"
+                const dateMatch = line.match(/(\d{2}\/\d{2}\/\d{4})/);
 
-            if (line.startsWith('Concurso:') && dateMatch) {
-                const [day, month, year] = dateMatch[1].split('/').map(Number);
-                // Create a Date object (month is 0-indexed in JS Date)
-                currentDate = new Date(year, month - 1, day);
-                // Move to the next line to get the numbers
-                if (i + 1 < lines.length) {
-                    const numbersLine = lines[++i]; // Increment i to consume the next line
-                    const numbers = numbersLine.split(/\D+/).filter(Boolean).map(Number);
+                if (line.startsWith('Concurso:') && dateMatch) {
+                    const [day, month, year] = dateMatch[1].split('/').map(Number);
+                    // Cria um objeto Date (o mês é baseado em 0 no Date do JS)
+                    const currentDate = new Date(year, month - 1, day);
+                    // Avança para a próxima linha para obter os números
+                    if (i + 1 < lines.length) {
+                        const numbersLine = lines[++i]; // Incrementa i para consumir a próxima linha
+                        const numbers = numbersLine.split(/\D+/).filter(Boolean).map(Number);
 
-                    const validNumbers = numbers.filter(num => num >= 1 && num <= 60);
+                        const validNumbers = numbers.filter(num => num >= 1 && num <= 60);
 
-                    if (validNumbers.length !== 6) {
-                        errors.push(`Erro na linha após a data ${dateMatch[1]}: Deve conter exatamente 6 números entre 1 e 60. Encontrados ${validNumbers.length}.`);
-                    } else if (new Set(validNumbers).size !== 6) {
-                        errors.push(`Erro na linha após a data ${dateMatch[1]}: Contém números duplicados.`);
+                        if (validNumbers.length !== 6) {
+                            errors.push(`Erro na linha após a data ${dateMatch[1]}: Deve conter exatamente 6 números entre 1 e 60. Encontrados ${validNumbers.length}.`);
+                        } else if (new Set(validNumbers).size !== 6) {
+                            errors.push(`Erro na linha após a data ${dateMatch[1]}: Contém números duplicados.`);
+                        } else {
+                            draws.push({ date: currentDate, numbers: validNumbers.sort((a, b) => a - b) });
+                        }
                     } else {
-                        draws.push({ date: currentDate, numbers: validNumbers.sort((a, b) => a - b) });
+                        errors.push(`Erro: Linha de concurso encontrada sem números correspondentes no final da entrada.`);
+                    }
+                }
+            }
+
+            if (errors.length > 0) {
+                errorMessage = errors.join('\n');
+                return [];
+            } else {
+                errorMessage = '';
+                return draws;
+            }
+        }
+
+        /**
+         * Calcula a frequência de cada número dos sorteios fornecidos.
+         * @param {Array<{date: Date, numbers: Array<number>}>} draws O array de sorteios a analisar.
+         * @returns {Array<[number, number]>} Um array ordenado de pares [número, frequência].
+         */
+        function calculateFrequency(draws) {
+            const counts = new Map();
+            // Inicializa todos os números de 1 a 60 com uma frequência de 0
+            for (let i = 1; i <= 60; i++) {
+                counts.set(i, 0);
+            }
+
+            draws.forEach(draw => {
+                draw.numbers.forEach(num => {
+                    counts.set(num, (counts.get(num) || 0) + 1);
+                });
+            });
+
+            // Converte o mapa para um array e ordena por frequência (descendente) e depois por número (ascendente)
+            return Array.from(counts.entries()).sort((a, b) => {
+                if (b[1] !== a[1]) {
+                    return b[1] - a[1]; // Ordena por frequência (descendente)
+                }
+                return a[0] - b[0]; // Depois por número (ascendente)
+            });
+        }
+
+        /**
+         * Gera um único jogo da Mega-Sena com base na estratégia escolhida.
+         * @param {string} strategy A estratégia de geração ('frequencia' ou 'ponderada').
+         * @param {Array<[number, number]>} frequencies As contagens de frequência ordenadas.
+         * @returns {Array<number>} Um array ordenado de 6 números únicos da Mega-Sena.
+         */
+        function generateSingleGame(strategy, frequencies) {
+            let game = new Set();
+            const availableNumbers = Array.from({ length: 60 }, (_, i) => i + 1); // Números de 1-60
+
+            if (strategy === 'frequencia') {
+                // Obtém os 6 números mais frequentes
+                const topNumbers = frequencies.slice(0, 6).map(item => item[0]);
+                game = new Set(topNumbers);
+
+                // Se não houver números únicos suficientes, preenche com números aleatórios únicos
+                while (game.size < 6) {
+                    const remainingNumbers = availableNumbers.filter(num => !game.has(num));
+                    if (remainingNumbers.length === 0) break; // Não deve acontecer para o intervalo de 1-60
+                    game.add(remainingNumbers[Math.floor(Math.random() * remainingNumbers.length)]);
+                }
+            } else if (strategy === 'ponderada') {
+                // Cria uma lista ponderada de números com base na sua frequência
+                const weightedNumbers = [];
+                frequencies.forEach(([num, freq]) => {
+                    for (let i = 0; i < freq; i++) {
+                        weightedNumbers.push(num);
+                    }
+                });
+
+                // Se não houver sorteios anteriores ou números únicos suficientes na lista ponderada, retorna para aleatório
+                if (weightedNumbers.length < 6) {
+                    while (game.size < 6) {
+                        game.add(availableNumbers[Math.floor(Math.random() * availableNumbers.length)]);
                     }
                 } else {
-                    errors.push(`Erro: Linha de concurso encontrada sem números correspondentes no final do input.`);
+                    while (game.size < 6) {
+                        // Escolhe um número aleatório da lista ponderada
+                        const selectedNum = weightedNumbers[Math.floor(Math.random() * weightedNumbers.length)];
+                        game.add(selectedNum);
+                    }
                 }
             }
+            return Array.from(game).sort((a, b) => a - b);
         }
 
-        if (errors.length > 0) {
-            setErrorMessage(errors.join('\n'));
-            return [];
-        } else {
-            setErrorMessage('');
-            return draws;
-        }
-    };
-
-    /**
-     * Calculates the frequency of each number from the provided draws.
-     * @param {Array<{date: Date, numbers: Array<number>}>} draws The array of draws to analyze.
-     * @returns {Array<[number, number]>} A sorted array of [number, frequency] pairs.
-     */
-    const calculateFrequency = (draws) => {
-        const counts = new Map();
-        // Initialize all numbers from 1 to 60 with a frequency of 0
-        for (let i = 1; i <= 60; i++) {
-            counts.set(i, 0);
+        /**
+         * Lida com a geração de múltiplos jogos da Mega-Sena.
+         */
+        function handleGenerateGames() {
+            if (filteredDraws.length === 0) {
+                errorMessage = 'Nenhum sorteio encontrado para os filtros selecionados. Por favor, ajuste os filtros ou insira mais dados.';
+                generatedGames = [];
+                renderApp();
+                return;
+            }
+            errorMessage = '';
+            const games = [];
+            for (let i = 0; i < numGamesToGenerate; i++) {
+                games.push(generateSingleGame(generationStrategy, frequencyCounts));
+            }
+            generatedGames = games;
+            renderApp();
         }
 
-        draws.forEach(draw => {
-            draw.numbers.forEach(num => {
-                counts.set(num, (counts.get(num) || 0) + 1);
+        /**
+         * Renderiza a interface do utilizador com base no estado atual da aplicação.
+         */
+        function renderApp() {
+            // Atualiza a área de texto dos sorteios anteriores
+            document.getElementById('pastDraws').value = pastDrawsInput;
+
+            // Atualiza a mensagem de erro
+            const errorMessageElement = document.getElementById('errorMessage');
+            errorMessageElement.textContent = errorMessage;
+            errorMessageElement.classList.toggle('hidden', !errorMessage);
+
+            // Preenche o seletor de anos
+            const filterYearSelect = document.getElementById('filterYear');
+            filterYearSelect.innerHTML = '<option value="all">Todos os Anos</option>';
+            const years = new Set(allParsedDraws.map(draw => draw.date.getFullYear().toString()));
+            Array.from(years).sort((a, b) => Number(b) - Number(a)).forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                filterYearSelect.appendChild(option);
             });
-        });
+            // Define o valor selecionado para o ano
+            filterYearSelect.value = selectedYear;
 
-        // Convert map to array and sort by frequency (descending) then by number (ascending)
-        return Array.from(counts.entries()).sort((a, b) => {
-            if (b[1] !== a[1]) {
-                return b[1] - a[1]; // Sort by frequency (descending)
-            }
-            return a[0] - b[0]; // Then by number (ascending)
-        });
-    };
+            // Define o valor selecionado para o mês
+            document.getElementById('filterMonth').value = selectedMonth;
 
-    // Effect to parse all draws when input changes
-    useEffect(() => {
-        const parsed = parseAllDraws(pastDrawsInput);
-        setAllParsedDraws(parsed);
-    }, [pastDrawsInput]);
-
-    // Effect to filter draws and calculate frequency when filters or allParsedDraws change
-    useEffect(() => {
-        let currentFilteredDraws = allParsedDraws;
-
-        if (selectedYear !== 'all') {
-            currentFilteredDraws = currentFilteredDraws.filter(draw =>
-                draw.date.getFullYear().toString() === selectedYear
-            );
-        }
-
-        if (selectedMonth !== 'all') {
-            currentFilteredDraws = currentFilteredDraws.filter(draw =>
-                (draw.date.getMonth() + 1).toString().padStart(2, '0') === selectedMonth
-            );
-        }
-
-        setFilteredDraws(currentFilteredDraws);
-        if (currentFilteredDraws.length > 0) {
-            setFrequencyCounts(calculateFrequency(currentFilteredDraws));
-        } else {
-            setFrequencyCounts([]);
-        }
-    }, [allParsedDraws, selectedMonth, selectedYear]);
-
-
-    /**
-     * Generates a single Mega-Sena game based on the chosen strategy.
-     * @param {string} strategy The generation strategy ('frequencia' or 'ponderada').
-     * @param {Array<[number, number]>} frequencies The sorted frequency counts.
-     * @returns {Array<number>} A sorted array of 6 unique Mega-Sena numbers.
-     */
-    const generateSingleGame = (strategy, frequencies) => {
-        let game = new Set();
-        const availableNumbers = Array.from({ length: 60 }, (_, i) => i + 1); // Numbers 1-60
-
-        if (strategy === 'frequencia') {
-            // Get the top 6 most frequent numbers
-            const topNumbers = frequencies.slice(0, 6).map(item => item[0]);
-            game = new Set(topNumbers);
-
-            // If not enough unique top numbers, fill with random unique numbers
-            while (game.size < 6) {
-                const remainingNumbers = availableNumbers.filter(num => !game.has(num));
-                if (remainingNumbers.length === 0) break; // Should not happen for 1-60 range
-                game.add(remainingNumbers[Math.floor(Math.random() * remainingNumbers.length)]);
-            }
-        } else if (strategy === 'ponderada') {
-            // Create a weighted list of numbers based on their frequency
-            const weightedNumbers = [];
-            frequencies.forEach(([num, freq]) => {
-                for (let i = 0; i < freq; i++) {
-                    weightedNumbers.push(num);
-                }
-            });
-
-            // If no past draws or not enough unique numbers in weighted list, fall back to random
-            if (weightedNumbers.length < 6) {
-                while (game.size < 6) {
-                    game.add(availableNumbers[Math.floor(Math.random() * availableNumbers.length)]);
-                }
+            // Atualiza a mensagem de filtro
+            const filterMessageElement = document.getElementById('filterMessage');
+            if (filteredDraws.length === 0 && allParsedDraws.length > 0 && (selectedMonth !== 'all' || selectedYear !== 'all')) {
+                filterMessageElement.textContent = 'Nenhum sorteio encontrado para os filtros selecionados.';
+                filterMessageElement.classList.remove('hidden');
             } else {
-                while (game.size < 6) {
-                    // Pick a random number from the weighted list
-                    const selectedNum = weightedNumbers[Math.floor(Math.random() * weightedNumbers.length)];
-                    game.add(selectedNum);
-                }
+                filterMessageElement.textContent = '';
+                filterMessageElement.classList.add('hidden');
+            }
+
+            // Renderiza a seção de análise de frequência
+            const frequencyAnalysisSection = document.getElementById('frequencyAnalysisSection');
+            const mostCommonNumbersContainer = document.getElementById('mostCommonNumbersContainer');
+            const frequencyDisplayMessage = document.getElementById('frequencyDisplayMessage');
+
+            mostCommonNumbersContainer.innerHTML = '';
+            if (frequencyCounts.length > 0 && filteredDraws.length > 0) {
+                frequencyAnalysisSection.classList.remove('hidden');
+                const mostCommonNumbers = frequencyCounts.slice(0, 20); // Exibe os 20 mais frequentes
+                mostCommonNumbers.forEach(([num, freq]) => {
+                    const div = document.createElement('div');
+                    div.className = 'bg-blue-100 p-3 rounded-md text-center shadow-sm border border-blue-200';
+                    div.innerHTML = `<span class="font-bold text-blue-700 text-lg">${String(num).padStart(2, '0')}</span>
+                                     <span class="text-gray-600 text-sm block">(${freq} vezes)</span>`;
+                    mostCommonNumbersContainer.appendChild(div);
+                });
+                frequencyDisplayMessage.classList.toggle('hidden', frequencyCounts.length <= 20);
+            } else {
+                frequencyAnalysisSection.classList.add('hidden');
+            }
+
+            // Renderiza a seção de sorteios filtrados
+            const filteredDrawsDisplaySection = document.getElementById('filteredDrawsDisplaySection');
+            const filteredDrawsContainer = document.getElementById('filteredDrawsContainer');
+            filteredDrawsContainer.innerHTML = '';
+            if (filteredDraws.length > 0) {
+                filteredDrawsDisplaySection.classList.remove('hidden');
+                filteredDraws.forEach((draw, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'mb-2 p-2 border-b border-gray-200 last:border-b-0';
+                    div.innerHTML = `<p class="text-gray-700 font-semibold">
+                                        ${draw.date.toLocaleDateString('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' })}:
+                                        <span class="ml-2 font-bold text-green-600">
+                                            ${draw.numbers.map(num => String(num).padStart(2, '0')).join(' ')}
+                                        </span>
+                                    </p>`;
+                    filteredDrawsContainer.appendChild(div);
+                });
+            } else {
+                filteredDrawsDisplaySection.classList.add('hidden');
+            }
+
+            // Atualiza as opções de geração
+            document.getElementById('numGames').value = numGamesToGenerate;
+            document.getElementById('strategy').value = generationStrategy;
+
+            // Renderiza a seção de jogos gerados
+            const generatedGamesSection = document.getElementById('generatedGamesSection');
+            const generatedGamesContainer = document.getElementById('generatedGamesContainer');
+            generatedGamesContainer.innerHTML = '';
+            if (generatedGames.length > 0) {
+                generatedGamesSection.classList.remove('hidden');
+                generatedGames.forEach((game, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'bg-white p-4 rounded-md shadow-sm border border-green-100 flex flex-wrap items-center justify-center gap-3';
+                    div.innerHTML = `<span class="text-gray-700 font-semibold mr-2">Jogo ${index + 1}:</span>
+                                     ${game.map(num => `<span class="bg-green-500 text-white font-bold text-lg w-10 h-10 flex items-center justify-center rounded-full shadow-md">
+                                            ${String(num).padStart(2, '0')}
+                                        </span>`).join('')}`;
+                    generatedGamesContainer.appendChild(div);
+                });
+            } else {
+                generatedGamesSection.classList.add('hidden');
             }
         }
-        return Array.from(game).sort((a, b) => a - b);
-    };
 
-    /**
-     * Handles the generation of multiple Mega-Sena games.
-     */
-    const handleGenerateGames = () => {
-        if (filteredDraws.length === 0) {
-            setErrorMessage('Nenhum sorteio encontrado para os filtros selecionados. Por favor, ajuste os filtros ou insira mais dados.');
-            setGeneratedGames([]);
-            return;
-        }
-        setErrorMessage('');
-        const games = [];
-        for (let i = 0; i < numGamesToGenerate; i++) {
-            games.push(generateSingleGame(generationStrategy, frequencyCounts));
-        }
-        setGeneratedGames(games);
-    };
+        /**
+         * Inicializa a aplicação ao carregar o DOM.
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializa os dados e renderiza a primeira vez
+            allParsedDraws = parseAllDraws(pastDrawsInput);
+            
+            // Define os anos disponíveis para o filtro
+            const years = new Set(allParsedDraws.map(draw => draw.date.getFullYear().toString()));
+            const availableYears = ['all', ...Array.from(years).sort((a, b) => Number(b) - Number(a))];
+            const filterYearSelect = document.getElementById('filterYear');
+            filterYearSelect.innerHTML = '<option value="all">Todos os Anos</option>';
+            availableYears.forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                filterYearSelect.appendChild(option);
+            });
 
-    // Memoize the most common numbers for display
-    const mostCommonNumbers = useMemo(() => {
-        return frequencyCounts.slice(0, 20); // Display top 20 most frequent
-    }, [frequencyCounts]);
+            // Aplica os filtros iniciais e calcula a frequência
+            let currentFilteredDraws = allParsedDraws;
+            if (selectedYear !== 'all') {
+                currentFilteredDraws = currentFilteredDraws.filter(draw =>
+                    draw.date.getFullYear().toString() === selectedYear
+                );
+            }
+            if (selectedMonth !== 'all') {
+                currentFilteredDraws = currentFilteredDraws.filter(draw =>
+                    (draw.date.getMonth() + 1).toString().padStart(2, '0') === selectedMonth
+                );
+            }
+            filteredDraws = currentFilteredDraws;
+            frequencyCounts = calculateFrequency(filteredDraws);
 
-    // Get unique years from all parsed draws for the year filter dropdown
-    const availableYears = useMemo(() => {
-        const years = new Set(allParsedDraws.map(draw => draw.date.getFullYear().toString()));
-        return ['all', ...Array.from(years).sort((a, b) => Number(b) - Number(a))]; // Sort descending
-    }, [allParsedDraws]);
+            renderApp();
 
+            // Adiciona listeners de eventos
+            document.getElementById('filterMonth').addEventListener('change', (e) => {
+                selectedMonth = e.target.value;
+                let currentFilteredDraws = allParsedDraws;
+                if (selectedYear !== 'all') {
+                    currentFilteredDraws = currentFilteredDraws.filter(draw =>
+                        draw.date.getFullYear().toString() === selectedYear
+                    );
+                }
+                if (selectedMonth !== 'all') {
+                    currentFilteredDraws = currentFilteredDraws.filter(draw =>
+                        (draw.date.getMonth() + 1).toString().padStart(2, '0') === selectedMonth
+                    );
+                }
+                filteredDraws = currentFilteredDraws;
+                frequencyCounts = calculateFrequency(filteredDraws);
+                renderApp();
+            });
 
-    return (
-        <div className="min-h-screen bg-gray-100 p-4 font-sans flex items-center justify-center">
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-md w-full max-w-4xl">
-                <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
-                    Gerador de Dezenas da Mega-Sena
-                </h1>
-                <p className="text-center text-gray-600 mb-6 max-w-2xl mx-auto">
-                    Utilize este aplicativo para gerar dezenas da Mega-Sena com base na frequência de números sorteados em concursos anteriores.
-                </p>
+            document.getElementById('filterYear').addEventListener('change', (e) => {
+                selectedYear = e.target.value;
+                let currentFilteredDraws = allParsedDraws;
+                if (selectedYear !== 'all') {
+                    currentFilteredDraws = currentFilteredDraws.filter(draw =>
+                        draw.date.getFullYear().toString() === selectedYear
+                    );
+                }
+                if (selectedMonth !== 'all') {
+                    currentFilteredDraws = currentFilteredDraws.filter(draw =>
+                        (draw.date.getMonth() + 1).toString().padStart(2, '0') === selectedMonth
+                    );
+                }
+                filteredDraws = currentFilteredDraws;
+                frequencyCounts = calculateFrequency(filteredDraws);
+                renderApp();
+            });
 
-                {/* Disclaimer Section */}
-                <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded mb-6">
-                    <p className="font-semibold mb-2">Atenção:</p>
-                    <p className="text-sm">
-                        A Mega-Sena é um jogo de azar e cada sorteio é independente. Este programa utiliza estatísticas de sorteios passados para sugerir dezenas, mas não há garantia de que números que saíram com frequência no passado continuarão a sair no futuro. Jogue com responsabilidade.
-                    </p>
-                </div>
+            document.getElementById('numGames').addEventListener('change', (e) => {
+                numGamesToGenerate = Math.max(1, Math.min(10, Number(e.target.value)));
+                renderApp();
+            });
 
-                {/* How to Use Section */}
-                <div className="mb-6 bg-blue-50 p-5 rounded-lg shadow-inner">
-                    <h2 className="text-xl md:text-2xl font-bold text-blue-800 mb-4">
-                        Como Usar:
-                    </h2>
-                    <ol className="list-decimal list-inside text-gray-700 space-y-2">
-                        <li>
-                            <span className="font-semibold">Visualize os Sorteios Anteriores:</span> Os resultados dos concursos da Mega-Sena estão pré-carregados na caixa de texto abaixo.
-                        </li>
-                        <li>
-                            <span className="font-semibold">Filtre por Mês e Ano:</span> Use os seletores de Mês e Ano para focar a análise em um período específico.
-                        </li>
-                        <li>
-                            <span className="font-semibold">Verifique a Análise de Frequência:</span> O sistema calculará e exibirá os números mais frequentes com base nos dados filtrados.
-                        </li>
-                        <li>
-                            <span className="font-semibold">Escolha as Opções de Geração:</span> Defina quantos jogos deseja gerar e qual estratégia usar (frequência direta ou ponderada).
-                        </li>
-                        <li>
-                            <span className="font-semibold">Gere Suas Dezenas:</span> Clique no botão "Gerar Dezenas" para obter suas sugestões.
-                        </li>
-                    </ol>
-                </div>
+            document.getElementById('strategy').addEventListener('change', (e) => {
+                generationStrategy = e.target.value;
+                renderApp();
+            });
 
-                {/* Input Section (now display-only) */}
-                <div className="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
-                    <label htmlFor="pastDraws" className="block text-gray-700 text-lg font-bold mb-3">
-                        1. Resultados dos Sorteios Anteriores:
-                    </label>
-                    <textarea
-                        id="pastDraws"
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 h-60 resize-y"
-                        value={pastDrawsInput}
-                        readOnly // Make it read-only
-                    ></textarea>
-                    {errorMessage && (
-                        <p className="text-red-600 text-sm mt-2 font-medium whitespace-pre-wrap">{errorMessage}</p>
-                    )}
-                </div>
-
-                {/* Filter Section */}
-                <div className="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
-                        2. Filtrar Sorteios:
-                    </h2>
-                    <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                        <div className="flex-1">
-                            <label htmlFor="filterMonth" className="block text-gray-700 text-md font-medium mb-2">
-                                Mês:
-                            </label>
-                            <select
-                                id="filterMonth"
-                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
-                                value={selectedMonth}
-                                onChange={(e) => setSelectedMonth(e.target.value)}
-                            >
-                                {months.map(month => (
-                                    <option key={month.value} value={month.value}>{month.label}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="flex-1">
-                            <label htmlFor="filterYear" className="block text-gray-700 text-md font-medium mb-2">
-                                Ano:
-                            </label>
-                            <select
-                                id="filterYear"
-                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
-                                value={selectedYear}
-                                onChange={(e) => setSelectedYear(e.target.value)}
-                            >
-                                <option value="all">Todos os Anos</option>
-                                {availableYears.map(year => (
-                                    <option key={year} value={year}>{year}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    {filteredDraws.length === 0 && allParsedDraws.length > 0 && (
-                        <p className="text-red-600 text-sm mt-2 font-medium">
-                            Nenhum sorteio encontrado para os filtros selecionados.
-                        </p>
-                    )}
-                </div>
-
-                {/* Frequency Analysis Section */}
-                {frequencyCounts.length > 0 && filteredDraws.length > 0 && (
-                    <div className="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
-                        <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
-                            3. Análise de Frequência dos Números (Sorteios Filtrados):
-                        </h2>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-                            {mostCommonNumbers.map(([num, freq]) => (
-                                <div key={num} className="bg-blue-100 p-3 rounded-md text-center shadow-sm border border-blue-200">
-                                    <span className="font-bold text-blue-700 text-lg">{String(num).padStart(2, '0')}</span>
-                                    <span className="text-gray-600 text-sm block">({freq} vezes)</span>
-                                </div>
-                            ))}
-                        </div>
-                        {frequencyCounts.length > 20 && (
-                            <p className="text-gray-600 text-sm mt-3 text-center">
-                                Exibindo os 20 números mais frequentes.
-                            </p>
-                        )}
-                    </div>
-                )}
-
-                {/* Generated Games Section - Display filtered draws here */}
-                {filteredDraws.length > 0 && (
-                    <div className="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
-                        <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
-                            Sorteios Filtrados:
-                        </h2>
-                        <div className="max-h-60 overflow-y-auto border border-gray-300 rounded-md p-3 bg-white">
-                            {filteredDraws.map((draw, index) => (
-                                <div key={index} className="mb-2 p-2 border-b border-gray-200 last:border-b-0">
-                                    <p className="text-gray-700 font-semibold">
-                                        {draw.date.toLocaleDateString('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' })}:
-                                        <span className="ml-2 font-bold text-green-600">
-                                            {draw.numbers.map(num => String(num).padStart(2, '0')).join(' ')}
-                                        </span>
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {/* Generation Options Section */}
-                <div className="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
-                        4. Opções de Geração:
-                    </h2>
-                    <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-                        <div className="flex-1">
-                            <label htmlFor="numGames" className="block text-gray-700 text-md font-medium mb-2">
-                                Quantos jogos gerar?
-                            </label>
-                            <input
-                                type="number"
-                                id="numGames"
-                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800"
-                                min="1"
-                                max="10" // Limit to 10 games for practicality
-                                value={numGamesToGenerate}
-                                onChange={(e) => setNumGamesToGenerate(Math.max(1, Math.min(10, Number(e.target.value))))}
-                            />
-                        </div>
-                        <div className="flex-1">
-                            <label htmlFor="strategy" className="block text-gray-700 text-md font-medium mb-2">
-                                Estratégia de Geração:
-                            </label>
-                            <select
-                                id="strategy"
-                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
-                                value={generationStrategy}
-                                onChange={(e) => setGenerationStrategy(e.target.value)}
-                            >
-                                <option value="frequencia">Mais Frequentes (Direta)</option>
-                                <option value="ponderada">Ponderada (Aleatória com Viés)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button
-                        onClick={handleGenerateGames}
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300"
-                    >
-                        Gerar Dezenas
-                    </button>
-                </div>
-
-                {/* Generated Games Section */}
-                {generatedGames.length > 0 && (
-                    <div className="bg-green-50 p-5 rounded-lg shadow-md border border-green-200">
-                        <h2 className="text-xl md:text-2xl font-bold text-green-800 mb-4">
-                            5. Seus Jogos Gerados:
-                        </h2>
-                        <div className="grid grid-cols-1 gap-4">
-                            {generatedGames.map((game, index) => (
-                                <div key={index} className="bg-white p-4 rounded-md shadow-sm border border-green-100 flex flex-wrap items-center justify-center gap-3">
-                                    <span className="text-gray-700 font-semibold mr-2">Jogo {index + 1}:</span>
-                                    {game.map((num, i) => (
-                                        <span key={i} className="bg-green-500 text-white font-bold text-lg w-10 h-10 flex items-center justify-center rounded-full shadow-md">
-                                            {String(num).padStart(2, '0')}
-                                        </span>
-                                    ))}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-};
-
-export default App;
+            document.getElementById('generateButton').addEventListener('click', handleGenerateGames);
+        });
+    </script>
+</body>
+</html>
