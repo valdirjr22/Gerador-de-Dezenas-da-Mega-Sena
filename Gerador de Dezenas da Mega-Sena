@@ -2819,9 +2819,9 @@ Concurso: 2867 - 24/05/2025 (Sábado)
 
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-400 to-blue-500 p-4 font-inter flex items-center justify-center">
-            <div className="bg-white p-6 md:p-8 rounded-2xl shadow-2xl w-full max-w-4xl border-4 border-yellow-400">
-                <h1 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-4 drop-shadow-md">
+        <div className="min-h-screen bg-gray-100 p-4 font-sans flex items-center justify-center">
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-md w-full max-w-4xl">
+                <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
                     Gerador de Dezenas da Mega-Sena
                 </h1>
                 <p className="text-center text-gray-600 mb-6 max-w-2xl mx-auto">
@@ -2829,7 +2829,7 @@ Concurso: 2867 - 24/05/2025 (Sábado)
                 </p>
 
                 {/* Disclaimer Section */}
-                <div className="bg-yellow-50 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-lg mb-6 shadow-inner">
+                <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded mb-6">
                     <p className="font-semibold mb-2">Atenção:</p>
                     <p className="text-sm">
                         A Mega-Sena é um jogo de azar e cada sorteio é independente. Este programa utiliza estatísticas de sorteios passados para sugerir dezenas, mas não há garantia de que números que saíram com frequência no passado continuarão a sair no futuro. Jogue com responsabilidade.
@@ -2837,7 +2837,7 @@ Concurso: 2867 - 24/05/2025 (Sábado)
                 </div>
 
                 {/* How to Use Section */}
-                <div className="mb-6 bg-blue-50 p-5 rounded-xl shadow-inner border border-blue-200">
+                <div className="mb-6 bg-blue-50 p-5 rounded-lg shadow-inner">
                     <h2 className="text-xl md:text-2xl font-bold text-blue-800 mb-4">
                         Como Usar:
                     </h2>
@@ -2861,13 +2861,13 @@ Concurso: 2867 - 24/05/2025 (Sábado)
                 </div>
 
                 {/* Input Section (now display-only) */}
-                <div className="mb-6 bg-gray-50 p-5 rounded-xl shadow-inner">
+                <div className="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
                     <label htmlFor="pastDraws" className="block text-gray-700 text-lg font-bold mb-3">
                         1. Resultados dos Sorteios Anteriores:
                     </label>
                     <textarea
                         id="pastDraws"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 ease-in-out text-gray-800 h-60 resize-y"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 h-60 resize-y"
                         value={pastDrawsInput}
                         readOnly // Make it read-only
                     ></textarea>
@@ -2877,7 +2877,7 @@ Concurso: 2867 - 24/05/2025 (Sábado)
                 </div>
 
                 {/* Filter Section */}
-                <div className="mb-6 bg-gray-50 p-5 rounded-xl shadow-inner">
+                <div className="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
                     <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
                         2. Filtrar Sorteios:
                     </h2>
@@ -2888,7 +2888,7 @@ Concurso: 2867 - 24/05/2025 (Sábado)
                             </label>
                             <select
                                 id="filterMonth"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 ease-in-out text-gray-800 bg-white"
+                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
                                 value={selectedMonth}
                                 onChange={(e) => setSelectedMonth(e.target.value)}
                             >
@@ -2903,7 +2903,7 @@ Concurso: 2867 - 24/05/2025 (Sábado)
                             </label>
                             <select
                                 id="filterYear"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 ease-in-out text-gray-800 bg-white"
+                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
                                 value={selectedYear}
                                 onChange={(e) => setSelectedYear(e.target.value)}
                             >
@@ -2923,19 +2923,19 @@ Concurso: 2867 - 24/05/2025 (Sábado)
 
                 {/* Frequency Analysis Section */}
                 {frequencyCounts.length > 0 && filteredDraws.length > 0 && (
-                    <div className="mb-6 bg-gray-50 p-5 rounded-xl shadow-inner">
+                    <div className="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
                         <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
                             3. Análise de Frequência dos Números (Sorteios Filtrados):
                         </h2>
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
                             {mostCommonNumbers.map(([num, freq]) => (
-                                <div key={num} className="bg-green-100 p-3 rounded-lg text-center shadow-sm border border-green-200">
-                                    <span className="font-bold text-green-700 text-lg">{String(num).padStart(2, '0')}</span>
+                                <div key={num} className="bg-blue-100 p-3 rounded-md text-center shadow-sm border border-blue-200">
+                                    <span className="font-bold text-blue-700 text-lg">{String(num).padStart(2, '0')}</span>
                                     <span className="text-gray-600 text-sm block">({freq} vezes)</span>
                                 </div>
                             ))}
                         </div>
-                        {frequencyCounts.length > 20 && ( // Changed from 10 to 20
+                        {frequencyCounts.length > 20 && (
                             <p className="text-gray-600 text-sm mt-3 text-center">
                                 Exibindo os 20 números mais frequentes.
                             </p>
@@ -2945,11 +2945,11 @@ Concurso: 2867 - 24/05/2025 (Sábado)
 
                 {/* Generated Games Section - Display filtered draws here */}
                 {filteredDraws.length > 0 && (
-                    <div className="mb-6 bg-gray-50 p-5 rounded-xl shadow-inner">
+                    <div className="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
                         <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
                             Sorteios Filtrados:
                         </h2>
-                        <div className="max-h-60 overflow-y-auto border border-gray-300 rounded-lg p-3 bg-white">
+                        <div className="max-h-60 overflow-y-auto border border-gray-300 rounded-md p-3 bg-white">
                             {filteredDraws.map((draw, index) => (
                                 <div key={index} className="mb-2 p-2 border-b border-gray-200 last:border-b-0">
                                     <p className="text-gray-700 font-semibold">
@@ -2965,7 +2965,7 @@ Concurso: 2867 - 24/05/2025 (Sábado)
                 )}
 
                 {/* Generation Options Section */}
-                <div className="mb-6 bg-gray-50 p-5 rounded-xl shadow-inner">
+                <div className="mb-6 bg-gray-50 p-5 rounded-lg shadow-inner">
                     <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
                         4. Opções de Geração:
                     </h2>
@@ -2977,7 +2977,7 @@ Concurso: 2867 - 24/05/2025 (Sábado)
                             <input
                                 type="number"
                                 id="numGames"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 ease-in-out text-gray-800"
+                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800"
                                 min="1"
                                 max="10" // Limit to 10 games for practicality
                                 value={numGamesToGenerate}
@@ -2990,7 +2990,7 @@ Concurso: 2867 - 24/05/2025 (Sábado)
                             </label>
                             <select
                                 id="strategy"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 ease-in-out text-gray-800 bg-white"
+                                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
                                 value={generationStrategy}
                                 onChange={(e) => setGenerationStrategy(e.target.value)}
                             >
@@ -3001,7 +3001,7 @@ Concurso: 2867 - 24/05/2025 (Sábado)
                     </div>
                     <button
                         onClick={handleGenerateGames}
-                        className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300"
+                        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300"
                     >
                         Gerar Dezenas
                     </button>
@@ -3009,13 +3009,13 @@ Concurso: 2867 - 24/05/2025 (Sábado)
 
                 {/* Generated Games Section */}
                 {generatedGames.length > 0 && (
-                    <div className="bg-green-50 p-5 rounded-xl shadow-lg border border-green-200">
+                    <div className="bg-green-50 p-5 rounded-lg shadow-md border border-green-200">
                         <h2 className="text-xl md:text-2xl font-bold text-green-800 mb-4">
                             5. Seus Jogos Gerados:
                         </h2>
                         <div className="grid grid-cols-1 gap-4">
                             {generatedGames.map((game, index) => (
-                                <div key={index} className="bg-white p-4 rounded-lg shadow-md border border-green-100 flex flex-wrap items-center justify-center gap-3">
+                                <div key={index} className="bg-white p-4 rounded-md shadow-sm border border-green-100 flex flex-wrap items-center justify-center gap-3">
                                     <span className="text-gray-700 font-semibold mr-2">Jogo {index + 1}:</span>
                                     {game.map((num, i) => (
                                         <span key={i} className="bg-green-500 text-white font-bold text-lg w-10 h-10 flex items-center justify-center rounded-full shadow-md">
