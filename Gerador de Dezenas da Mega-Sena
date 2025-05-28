@@ -131,14 +131,6 @@
             </p>
         </div>
 
-        <div id="filteredDrawsSection" class="mb-6 bg-gray-50 p-5 rounded-xl shadow-inner hidden">
-            <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
-                Sorteios Filtrados:
-            </h2>
-            <div id="filteredDrawsList" class="max-h-60 overflow-y-auto border border-gray-300 rounded-lg p-3 bg-white">
-                </div>
-        </div>
-
         <div class="mb-6 bg-gray-50 p-5 rounded-xl shadow-inner">
             <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
                 5. Opções de Geração:
@@ -2391,7 +2383,7 @@ Concurso: 2677 - 18/01/2024 (Quinta)
             quina: {
                 numbersPerDraw: 5,
                 maxNumber: 80,
-                data: `Quina - Janeiro/2023
+                data: `Janeiro/2023
 
 Concurso: 6000 - 02/01/2023 (Segunda)
 01 10 20 30 40
@@ -2406,7 +2398,7 @@ Concurso: 6004 - 06/01/2023 (Sexta)
 Concurso: 6005 - 07/01/2023 (Sábado)
 06 15 25 35 45
 
-Quina - Fevereiro/2023
+Fevereiro/2023
 
 Concurso: 6006 - 01/02/2023 (Quarta)
 07 16 26 36 46
@@ -2417,7 +2409,7 @@ Concurso: 6008 - 03/02/2023 (Sexta)
 Concurso: 6009 - 04/02/2023 (Sábado)
 10 19 29 39 49
 
-Quina - Março/2023
+Março/2023
 
 Concurso: 6010 - 01/03/2023 (Quarta)
 11 20 30 40 50
@@ -2428,7 +2420,7 @@ Concurso: 6012 - 03/03/2023 (Sexta)
 Concurso: 6013 - 04/03/2023 (Sábado)
 14 23 33 43 53
 
-Quina - Abril/2023
+Abril/2023
 
 Concurso: 6014 - 03/04/2023 (Segunda)
 15 24 34 44 54
@@ -2443,7 +2435,7 @@ Concurso: 6018 - 07/04/2023 (Sexta)
 Concurso: 6019 - 08/04/2023 (Sábado)
 20 29 39 49 59
 
-Quina - Maio/2023
+Maio/2023
 
 Concurso: 6020 - 01/05/2023 (Segunda)
 21 30 40 50 60
@@ -2458,7 +2450,7 @@ Concurso: 6024 - 05/05/2023 (Sexta)
 Concurso: 6025 - 06/05/2023 (Sábado)
 26 35 45 55 65
 
-Quina - Junho/2023
+Junho/2023
 
 Concurso: 6026 - 01/06/2023 (Quinta)
 27 36 46 56 66
@@ -2467,7 +2459,7 @@ Concurso: 6027 - 02/06/2023 (Sexta)
 Concurso: 6028 - 03/06/2023 (Sábado)
 29 38 48 58 68
 
-Quina - Julho/2023
+Julho/2023
 
 Concurso: 6029 - 03/07/2023 (Segunda)
 30 39 49 59 69
@@ -2482,7 +2474,7 @@ Concurso: 6033 - 07/07/2023 (Sexta)
 Concurso: 6034 - 08/07/2023 (Sábado)
 35 44 54 64 74
 
-Quina - Agosto/2023
+Agosto/2023
 
 Concurso: 6035 - 01/08/2023 (Terça)
 36 45 55 65 75
@@ -2495,14 +2487,14 @@ Concurso: 6038 - 04/08/2023 (Sexta)
 Concurso: 6039 - 05/08/2023 (Sábado)
 40 49 59 69 79
 
-Quina - Setembro/2023
+Setembro/2023
 
 Concurso: 6040 - 01/09/2023 (Sexta)
 41 50 60 70 80
 Concurso: 6041 - 02/09/2023 (Sábado)
 01 02 03 04 05
 
-Quina - Outubro/2023
+Outubro/2023
 
 Concurso: 6042 - 02/10/2023 (Segunda)
 06 07 08 09 10
@@ -2517,7 +2509,7 @@ Concurso: 6046 - 06/10/2023 (Sexta)
 Concurso: 6047 - 07/10/2023 (Sábado)
 31 32 33 34 35
 
-Quina - Novembro/2023
+Novembro/2023
 
 Concurso: 6048 - 01/11/2023 (Quarta)
 36 37 38 39 40
@@ -2528,14 +2520,14 @@ Concurso: 6050 - 03/11/2023 (Sexta)
 Concurso: 6051 - 04/11/2023 (Sábado)
 51 52 53 54 55
 
-Quina - Dezembro/2023
+Dezembro/2023
 
 Concurso: 6052 - 01/12/2023 (Sexta)
 56 57 58 59 60
 Concurso: 6053 - 02/12/2023 (Sábado)
 61 62 63 64 65
 
-Quina - Janeiro/2024
+Janeiro/2024
 
 Concurso: 6300 - 02/01/2024 (Terça)
 11 20 30 50 60
@@ -2543,6 +2535,261 @@ Concurso: 6301 - 03/01/2024 (Quarta)
 12 21 31 51 61
 Concurso: 6302 - 04/01/2024 (Quinta)
 13 22 32 52 62
+
+Janeiro/2025
+
+Concurso: 6621 - 02/01/2025 (Quinta)
+06 12 42 44 62
+Concurso: 6622 - 03/01/2025 (Sexta)
+01 02 25 37 79
+Concurso: 6623 - 04/01/2025 (Sábado)
+27 51 52 54 65
+Concurso: 6624 - 06/01/2025 (Segunda)
+10 23 48 74 79
+Concurso: 6625 - 07/01/2025 (Terça)
+17 19 30 48 77
+Concurso: 6626 - 08/01/2025 (Quarta)
+03 11 19 52 71
+Concurso: 6627 - 09/01/2025 (Quinta)
+11 13 21 41 54
+Concurso: 6628 - 10/01/2025 (Sexta)
+33 40 43 48 70
+Concurso: 6629 - 11/01/2025 (Sábado)
+05 19 26 43 66
+Concurso: 6630 - 13/01/2025 (Segunda)
+09 37 42 55 71
+Concurso: 6631 - 14/01/2025 (Terça)
+03 10 57 65 67
+Concurso: 6632 - 15/01/2025 (Quarta)
+15 24 45 52 70
+Concurso: 6633 - 16/01/2025 (Quinta)
+25 41 59 75 77
+Concurso: 6634 - 17/01/2025 (Sexta)
+23 32 37 71 72
+Concurso: 6635 - 18/01/2025 (Sábado)
+13 38 49 63 66
+Concurso: 6636 - 20/01/2025 (Segunda)
+02 22 31 35 53
+Concurso: 6637 - 21/01/2025 (Terça)
+13 33 34 46 70
+Concurso: 6638 - 22/01/2025 (Quarta)
+13 26 40 57 75
+Concurso: 6639 - 23/01/2025 (Quinta)
+19 26 72 76 77
+Concurso: 6640 - 24/01/2025 (Sexta)
+01 05 08 77 78
+Concurso: 6641 - 25/01/2025 (Sábado)
+22 52 60 63 78
+Concurso: 6642 - 27/01/2025 (Segunda)
+18 21 27 57 72
+Concurso: 6643 - 28/01/2025 (Terça)
+08 28 42 47 78
+Concurso: 6644 - 29/01/2025 (Quarta)
+08 18 59 60 75
+Concurso: 6645 - 30/01/2025 (Quinta)
+05 19 48 64 76
+Concurso: 6646 - 31/01/2025 (Sexta)
+07 41 65 77 79
+
+Fevereiro/2025
+
+Concurso: 6647 - 01/02/2025 (Sábado)
+05 14 31 43 51
+Concurso: 6648 - 03/02/2025 (Segunda)
+16 25 39 58 68
+Concurso: 6649 - 04/02/2025 (Terça)
+09 43 47 65 74
+Concurso: 6650 - 05/02/2025 (Quarta)
+16 23 24 27 48
+Concurso: 6651 - 06/02/2025 (Quinta)
+14 23 31 48 63
+Concurso: 6652 - 07/02/2025 (Sexta)
+42 47 52 59 65
+Concurso: 6653 - 08/02/2025 (Sábado)
+13 17 40 49 51
+Concurso: 6654 - 10/02/2025 (Segunda)
+14 25 48 51 66
+Concurso: 6655 - 11/02/2025 (Terça)
+10 34 41 44 69
+Concurso: 6656 - 12/02/2025 (Quarta)
+17 24 31 66 79
+Concurso: 6657 - 13/02/2025 (Quinta)
+10 30 41 53 69
+Concurso: 6658 - 14/02/2025 (Sexta)
+15 22 56 60 71
+Concurso: 6659 - 15/02/2025 (Sábado)
+05 12 20 69 70
+Concurso: 6660 - 17/02/2025 (Segunda)
+05 15 21 35 43
+Concurso: 6661 - 18/02/2025 (Terça)
+28 45 48 72 76
+Concurso: 6662 - 19/02/2025 (Quarta)
+04 34 40 61 66
+Concurso: 6663 - 20/02/2025 (Quinta)
+21 35 44 52 62
+Concurso: 6664 - 21/02/2025 (Sexta)
+11 23 32 44 76
+Concurso: 6665 - 22/02/2025 (Sábado)
+26 30 35 66 77
+Concurso: 6666 - 24/02/2025 (Segunda)
+10 20 23 25 74
+Concurso: 6667 - 25/02/2025 (Terça)
+02 03 19 42 48
+Concurso: 6668 - 26/02/2025 (Quarta)
+19 31 32 54 78
+Concurso: 6669 - 27/02/2025 (Quinta)
+01 31 33 60 69
+Concurso: 6670 - 28/02/2025 (Sexta)
+05 14 21 31 65
+
+Março/2025
+
+Concurso: 6671 - 01/03/2025 (Sábado)
+46 47 61 66 75
+Concurso: 6672 - 05/03/2025 (Quarta)
+27 30 48 66 73
+Concurso: 6673 - 06/03/2025 (Quinta)
+14 26 35 52 74
+Concurso: 6674 - 07/03/2025 (Sexta)
+19 32 57 60 75
+Concurso: 6675 - 08/03/2025 (Sábado)
+13 25 26 37 76
+Concurso: 6676 - 10/03/2025 (Segunda)
+11 25 29 31 45
+Concurso: 6677 - 11/03/2025 (Terça)
+17 52 69 72 75
+Concurso: 6678 - 12/03/2025 (Quarta)
+33 36 50 51 69
+Concurso: 6679 - 13/03/2025 (Quinta)
+03 05 16 28 37
+Concurso: 6680 - 14/03/2025 (Sexta)
+08 13 22 34 41
+Concurso: 6681 - 15/03/2025 (Sábado)
+39 46 52 65 77
+Concurso: 6682 - 17/03/2025 (Segunda)
+08 15 24 28 68
+Concurso: 6683 - 18/03/2025 (Terça)
+20 23 53 60 71
+Concurso: 6684 - 19/03/2025 (Quarta)
+09 15 27 65 76
+Concurso: 6685 - 20/03/2025 (Quinta)
+06 20 37 51 69
+Concurso: 6686 - 21/03/2025 (Sexta)
+15 16 25 35 67
+Concurso: 6687 - 22/03/2025 (Sábado)
+10 11 39 41 50
+Concurso: 6688 - 24/03/2025 (Segunda)
+21 40 43 67 68
+Concurso: 6689 - 25/03/2025 (Terça)
+07 23 24 55 56
+Concurso: 6690 - 26/03/2025 (Quarta)
+01 33 53 55 76
+Concurso: 6691 - 27/03/2025 (Quinta)
+06 07 38 56 67
+Concurso: 6692 - 28/03/2025 (Sexta)
+07 13 21 34 76
+Concurso: 6693 - 29/03/2025 (Sábado)
+13 17 20 29 46
+Concurso: 6694 - 31/03/2025 (Segunda)
+24 38 43 44 49
+
+Abril/2025
+
+Concurso: 6695 - 01/04/2025 (Terça)
+22 62 67 70 79
+Concurso: 6696 - 02/04/2025 (Quarta)
+15 19 51 55 57
+Concurso: 6697 - 03/04/2025 (Quinta)
+40 42 44 47 52
+Concurso: 6698 - 04/04/2025 (Sexta)
+07 13 18 22 32
+Concurso: 6699 - 05/04/2025 (Sábado)
+08 13 41 48 78
+Concurso: 6700 - 07/04/2025 (Segunda)
+12 21 23 31 42
+Concurso: 6701 - 08/04/2025 (Terça)
+04 09 21 29 64
+Concurso: 6702 - 09/04/2025 (Quarta)
+27 43 51 53 78
+Concurso: 6703 - 10/04/2025 (Quinta)
+08 16 53 61 74
+Concurso: 6704 - 11/04/2025 (Sexta)
+09 23 26 44 70
+Concurso: 6705 - 12/04/2025 (Sábado)
+19 27 34 50 72
+Concurso: 6706 - 14/04/2025 (Segunda)
+40 41 65 66 71
+Concurso: 6707 - 15/04/2025 (Terça)
+14 32 58 70 77
+Concurso: 6708 - 16/04/2025 (Quarta)
+09 13 15 40 77
+Concurso: 6709 - 17/04/2025 (Quinta)
+29 32 39 57 61
+Concurso: 6710 - 19/04/2025 (Sábado)
+13 17 18 29 78
+Concurso: 6711 - 22/04/2025 (Terça)
+10 15 48 52 71
+Concurso: 6712 - 23/04/2025 (Quarta)
+01 27 49 57 63
+Concurso: 6713 - 24/04/2025 (Quinta)
+35 43 48 52 72
+Concurso: 6714 - 25/04/2025 (Sexta)
+20 31 47 59 72
+Concurso: 6715 - 26/04/2025 (Sábado)
+09 14 28 37 51
+Concurso: 6716 - 28/04/2025 (Segunda)
+18 22 60 61 62
+Concurso: 6717 - 29/04/2025 (Terça)
+06 13 62 72 77
+Concurso: 6718 - 30/04/2025 (Quarta)
+19 36 53 65 66
+
+Maio/2025
+
+Concurso: 6719 - 02/05/2025 (Sexta)
+07 09 15 37 44
+Concurso: 6720 - 03/05/2025 (Sábado)
+04 42 55 61 68
+Concurso: 6721 - 05/05/2025 (Segunda)
+05 43 56 74 79
+Concurso: 6722 - 06/05/2025 (Terça)
+07 15 24 32 52
+Concurso: 6723 - 07/05/2025 (Quarta)
+15 41 51 56 79
+Concurso: 6724 - 08/05/2025 (Quinta)
+12 13 22 54 74
+Concurso: 6725 - 09/05/2025 (Sexta)
+20 23 30 39 53
+Concurso: 6726 - 10/05/2025 (Sábado)
+20 49 56 60 67
+Concurso: 6727 - 12/05/2025 (Segunda)
+02 06 14 16 60
+Concurso: 6728 - 13/05/2025 (Terça)
+08 15 38 44 80
+Concurso: 6729 - 14/05/2025 (Quarta)
+17 20 25 37 39
+Concurso: 6730 - 15/05/2025 (Quinta)
+21 44 57 60 65
+Concurso: 6731 - 16/05/2025 (Sexta)
+24 41 51 57 62
+Concurso: 6732 - 17/05/2025 (Sábado)
+13 19 22 43 64
+Concurso: 6733 - 19/05/2025 (Segunda)
+18 34 36 61 70
+Concurso: 6734 - 20/05/2025 (Terça)
+17 32 44 65 80
+Concurso: 6735 - 21/05/2025 (Quarta)
+30 49 50 73 79
+Concurso: 6736 - 22/05/2025 (Quinta)
+17 29 60 75 80
+Concurso: 6737 - 23/05/2025 (Sexta)
+03 43 63 67 74
+Concurso: 6738 - 24/05/2025 (Sábado)
+02 47 60 61 62
+Concurso: 6739 - 26/05/2025 (Segunda)
+10 31 48 74 79
+Concurso: 6740 - 27/05/2025 (Terça)
+21 39 46 58 71
 `
             }
         };
@@ -2562,8 +2809,7 @@ Concurso: 6302 - 04/01/2024 (Quinta)
         const frequencyAnalysisSection = document.getElementById('frequencyAnalysisSection');
         const mostCommonNumbersDiv = document.getElementById('mostCommonNumbers');
         const frequencyDisclaimer = document.getElementById('frequencyDisclaimer');
-        const filteredDrawsSection = document.getElementById('filteredDrawsSection');
-        const filteredDrawsListDiv = document.getElementById('filteredDrawsList');
+        // Removed filteredDrawsSection and filteredDrawsListDiv as per request
         const numGamesInput = document.getElementById('numGames');
         const strategySelect = document.getElementById('strategy');
         const generateGamesButton = document.getElementById('generateGamesButton');
@@ -2583,52 +2829,45 @@ Concurso: 6302 - 04/01/2024 (Quinta)
             let currentYear = '';
             let currentMonth = '';
 
-            for (const line of lines) {
-                // Check for month/year headers (e.g., "Janeiro/2015")
-                const monthYearMatch = line.match(/([a-zA-ZçÇãÃõÕéÉíÍóÓúÚ]+)\/(\d{4})/);
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+
+                // Check for month/year headers (e.g., "Janeiro/2015" or "Quina - Janeiro/2023")
+                const monthYearMatch = line.match(/(?:Mega-Sena|Quina)?\s*([a-zA-ZçÇãÃõÕéÉíÍóÓúÚ]+)\/(\d{4})/);
                 if (monthYearMatch) {
                     currentMonth = monthYearMatch[1];
                     currentYear = monthYearMatch[2];
                     continue;
                 }
 
-                // Check for draw lines (e.g., "Concurso: 1666 - 03/01/2015 (Sábado)\n01 02 23 27 45 51")
-                const drawMatch = line.match(/Concurso: (\d+) - (\d{2}\/\d{2}\/\d{4}) \(([^)]+)\)/);
-                if (drawMatch) {
+                // Check for draw lines (e.g., "Concurso: 1666 - 03/01/2015 (Sábado)")
+                const drawInfoMatch = line.match(/Concurso:\s*(\d+)\s*-\s*(\d{2}\/\d{2}\/(\d{4}))\s*\(([^)]+)\)/);
+                if (drawInfoMatch) {
                     // The next line should contain the numbers
-                    continue; // Skip this line, numbers are on the next
-                }
+                    if (i + 1 < lines.length) {
+                        const numbersLine = lines[i + 1];
+                        const numbers = numbersLine.split(' ').map(Number).filter(n => !isNaN(n) && n > 0);
 
-                // If it's a line with numbers
-                const numbers = line.split(' ').map(Number).filter(n => !isNaN(n) && n > 0);
+                        if (numbers.length === numbersPerDraw) {
+                            const monthNum = drawInfoMatch[2].substring(3, 5); // Extract MM from DD/MM/YYYY
+                            const drawMonth = monthNumToName(monthNum);
+                            const drawYear = drawInfoMatch[3];
 
-                if (numbers.length === numbersPerDraw) {
-                    // Extract month and year from the date string if available, otherwise use currentMonth/Year
-                    const dateMatch = lines[lines.indexOf(line) - 1]?.match(/ - (\d{2}\/(\d{2})\/(\d{4}))/);
-                    let drawMonth = currentMonth;
-                    let drawYear = currentYear;
-
-                    if (dateMatch) {
-                        const monthNum = dateMatch[2];
-                        const yearNum = dateMatch[3];
-                        drawMonth = monthNumToName(monthNum);
-                        drawYear = yearNum;
+                            draws.push({
+                                year: drawYear,
+                                month: drawMonth,
+                                numbers: numbers.sort((a, b) => a - b) // Sort numbers for consistency
+                            });
+                            i++; // Skip the numbers line as it's already processed
+                        } else if (numbers.length > 0) {
+                            console.warn(`Skipping malformed line (unexpected number count for ${currentLottery}): ${numbersLine}`);
+                        }
                     }
-
-                    draws.push({
-                        year: drawYear,
-                        month: drawMonth,
-                        numbers: numbers.sort((a, b) => a - b) // Sort numbers for consistency
-                    });
-                } else if (numbers.length > 0) {
-                    // This means a line with numbers was found but it's not the expected count.
-                    // This could be due to incomplete data or malformed input.
-                    // For now, we'll just log and skip, but in a real app, you might want more robust error handling.
-                    console.warn(`Skipping malformed line (unexpected number count for ${currentLottery}): ${line}`);
                 }
             }
             return draws;
         }
+
 
         /**
          * Converts a numeric month string to its Portuguese name.
@@ -2711,25 +2950,17 @@ Concurso: 6302 - 04/01/2024 (Quinta)
         }
 
         /**
-         * Renders the filtered draws in the dedicated list.
-         * @param {Array<Object>} draws - An array of filtered draw objects.
+         * Updates the year filter options based on the available data.
+         * @param {Array<Object>} draws - All parsed draw objects.
          */
-        function renderFilteredDraws(draws) {
-            filteredDrawsListDiv.innerHTML = ''; // Clear previous content
-            if (draws.length === 0) {
-                noDrawsMessage.classList.remove('hidden');
-                filteredDrawsSection.classList.add('hidden');
-                return;
-            } else {
-                noDrawsMessage.classList.add('hidden');
-                filteredDrawsSection.classList.remove('hidden');
-            }
-
-            draws.forEach(draw => {
-                const div = document.createElement('div');
-                div.className = 'bg-white p-2 rounded-md shadow-sm border border-gray-100 text-sm';
-                div.innerHTML = `<span class="font-semibold">${draw.month} ${draw.year}:</span> ${draw.numbers.map(n => String(n).padStart(2, '0')).join(' ')}`;
-                filteredDrawsListDiv.appendChild(div);
+        function updateYearFilterOptions(draws) {
+            const years = new Set(draws.map(draw => draw.year));
+            filterYearSelect.innerHTML = '<option value="all">Todos os Anos</option>';
+            Array.from(years).sort().forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                filterYearSelect.appendChild(option);
             });
         }
 
@@ -2788,21 +3019,6 @@ Concurso: 6302 - 04/01/2024 (Quinta)
         }
 
         /**
-         * Updates the year filter options based on the available data.
-         * @param {Array<Object>} draws - All parsed draw objects.
-         */
-        function updateYearFilterOptions(draws) {
-            const years = new Set(draws.map(draw => draw.year));
-            filterYearSelect.innerHTML = '<option value="all">Todos os Anos</option>';
-            Array.from(years).sort().forEach(year => {
-                const option = document.createElement('option');
-                option.value = year;
-                option.textContent = year;
-                filterYearSelect.appendChild(option);
-            });
-        }
-
-        /**
          * Handles the change in lottery selection.
          */
         function handleLotteryChange() {
@@ -2826,7 +3042,6 @@ Concurso: 6302 - 04/01/2024 (Quinta)
                 filteredDraws = [];
                 numberFrequencies = {};
                 renderFrequency({}, numbersPerDraw);
-                renderFilteredDraws([]);
             }
         }
 
@@ -2838,12 +3053,18 @@ Concurso: 6302 - 04/01/2024 (Quinta)
             const selectedYear = filterYearSelect.value;
 
             filteredDraws = filterDraws(allDraws, selectedMonth, selectedYear);
-            renderFilteredDraws(filteredDraws);
+            // Removed call to renderFilteredDraws(filteredDraws);
 
             const numbersPerDraw = lotteryData[currentLottery].numbersPerDraw;
             const maxNumber = lotteryData[currentLottery].maxNumber;
             numberFrequencies = calculateFrequency(filteredDraws, maxNumber);
             renderFrequency(numberFrequencies, numbersPerDraw);
+
+            if (filteredDraws.length === 0) {
+                noDrawsMessage.classList.remove('hidden');
+            } else {
+                noDrawsMessage.classList.add('hidden');
+            }
         }
 
         // Event Listeners
