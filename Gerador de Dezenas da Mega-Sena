@@ -2378,6 +2378,132 @@ Concurso: 2676 - 16/01/2024 (Terça)
 07 08 09 10 11 12
 Concurso: 2677 - 18/01/2024 (Quinta)
 13 14 15 16 17 18
+Janeiro/2025
+
+Concurso: 2811 - 04/01/2025 (Sábado)
+08 27 36 37 39 45
+Concurso: 2812 - 07/01/2025 (Terça)
+15 18 27 31 39 42
+Concurso: 2813 - 09/01/2025 (Quinta)
+10 21 32 38 51 58
+Concurso: 2814 - 11/01/2025 (Sábado)
+11 17 19 26 49 54
+Concurso: 2815 - 14/01/2025 (Terça)
+05 20 28 38 50 53
+Concurso: 2816 - 16/01/2025 (Quinta)
+04 17 19 20 40 48
+Concurso: 2817 - 18/01/2025 (Sábado)
+24 30 43 46 55 60
+Concurso: 2818 - 21/01/2025 (Terça)
+07 10 12 15 25 47
+Concurso: 2819 - 23/01/2025 (Quinta)
+11 12 39 43 46 50
+Concurso: 2820 - 25/01/2025 (Sábado)
+06 15 19 25 32 42
+Concurso: 2821 - 28/01/2025 (Terça)
+14 22 30 33 44 45
+Concurso: 2822 - 30/01/2025 (Quinta)
+29 39 46 47 53 56
+Fevereiro/2025
+
+Concurso: 2823 - 01/02/2025 (Sábado)
+07 15 21 37 57 60
+Concurso: 2824 - 04/02/2025 (Terça)
+04 16 34 43 54 57
+Concurso: 2825 - 06/02/2025 (Quinta)
+02 38 50 54 58 59
+Concurso: 2826 - 08/02/2025 (Sábado)
+06 10 20 54 58 60
+Concurso: 2827 - 11/02/2025 (Terça)
+01 11 13 27 45 59
+Concurso: 2828 - 13/02/2025 (Quinta)
+15 21 25 55 58 59
+Concurso: 2829 - 15/02/2025 (Sábado)
+13 22 38 46 51 56
+Concurso: 2830 - 18/02/2025 (Terça)
+01 28 34 36 51 52
+Concurso: 2831 - 20/02/2025 (Quinta)
+02 09 32 38 48 55
+Concurso: 2832 - 22/02/2025 (Sábado)
+02 12 18 21 24 37
+Concurso: 2833 - 25/02/2025 (Terça)
+01 03 13 16 36 56
+Concurso: 2834 - 27/02/2025 (Quinta)
+05 08 11 15 39 47
+Março/2025
+
+Concurso: 2835 - 01/03/2025 (Sábado)
+09 24 27 36 43 54
+Concurso: 2836 - 06/03/2025 (Quinta)
+01 06 10 30 42 50
+Concurso: 2837 - 08/03/2025 (Sábado)
+03 14 34 35 42 50
+Concurso: 2838 - 11/03/2025 (Terça)
+04 07 29 32 36 53
+Concurso: 2839 - 13/03/2025 (Quinta)
+27 30 37 40 46 47
+Concurso: 2840 - 15/03/2025 (Sábado)
+01 33 39 49 57 60
+Concurso: 2841 - 18/03/2025 (Terça)
+04 05 12 34 36 48
+Concurso: 2842 - 20/03/2025 (Quinta)
+04 08 49 51 52 55
+Concurso: 2843 - 22/03/2025 (Sábado)
+01 37 39 40 43 59
+Concurso: 2844 - 25/03/2025 (Terça)
+07 20 31 54 55 58
+Concurso: 2845 - 27/03/2025 (Quinta)
+10 31 40 52 54 56
+Concurso: 2846 - 29/03/2025 (Sábado)
+01 12 16 17 25 57
+Abril/2025
+
+Concurso: 2847 - 01/04/2025 (Terça)
+03 05 22 35 53 56
+Concurso: 2848 - 03/04/2025 (Quinta)
+05 14 19 29 30 54
+Concurso: 2849 - 05/04/2025 (Sábado)
+13 19 25 29 31 43
+Concurso: 2850 - 08/04/2025 (Terça)
+01 02 15 26 43 50
+Concurso: 2851 - 10/04/2025 (Quinta)
+05 06 17 37 43 54
+Concurso: 2852 - 12/04/2025 (Sábado)
+06 22 24 49 53 56
+Concurso: 2853 - 15/04/2025 (Terça)
+04 18 23 48 53 56
+Concurso: 2854 - 19/04/2025 (Sábado)
+02 13 16 31 44 55
+Concurso: 2855 - 24/04/2025 (Quinta)
+12 16 24 31 51 55
+Concurso: 2856 - 26/04/2025 (Sábado)
+03 05 10 27 38 48
+Concurso: 2857 - 29/04/2025 (Terça)
+02 18 28 38 41 50
+Maio/2025
+
+Concurso: 2858 - 03/05/2025 (Sábado)
+08 18 27 28 48 52
+Concurso: 2859 - 06/05/2025 (Terça)
+07 08 15 17 20 51
+Concurso: 2860 - 08/05/2025 (Quinta)
+02 05 17 24 38 57
+Concurso: 2861 - 10/05/2025 (Sábado)
+02 21 27 46 51 53
+Concurso: 2862 - 13/05/2025 (Terça)
+02 04 14 18 22 44
+Concurso: 2863 - 15/05/2025 (Quinta)
+05 23 32 34 47 56
+Concurso: 2864 - 17/05/2025 (Sábado)
+05 06 15 17 31 53
+Concurso: 2865 - 20/05/2025 (Terça)
+02 25 30 39 47 51
+Concurso: 2866 - 22/05/2025 (Quinta)
+01 12 17 19 36 60
+Concurso: 2867 - 24/05/2025 (Sábado)
+05 09 15 24 25 60
+Concurso: 2868 - 27/05/2025 (Terça)
+10 19 22 26 38 51
 `
             },
             quina: {
@@ -2846,7 +2972,9 @@ Concurso: 6740 - 27/05/2025 (Terça)
                     // The next line should contain the numbers
                     if (i + 1 < lines.length) {
                         const numbersLine = lines[i + 1];
-                        const numbers = numbersLine.split(' ').map(Number).filter(n => !isNaN(n) && n > 0);
+                        // Remove "Mais Detalhes" and any trailing comments before splitting numbers
+                        const cleanedNumbersLine = numbersLine.replace(/Mais Detalhes.*$/, '').trim();
+                        const numbers = cleanedNumbersLine.split(' ').map(Number).filter(n => !isNaN(n) && n > 0);
 
                         if (numbers.length === numbersPerDraw) {
                             const monthNum = drawInfoMatch[2].substring(3, 5); // Extract MM from DD/MM/YYYY
