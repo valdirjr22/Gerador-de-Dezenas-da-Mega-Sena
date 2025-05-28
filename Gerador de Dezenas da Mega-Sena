@@ -109,7 +109,7 @@
                     </label>
                     <select
                         id="filterYear"
-                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus="ring-green-500 focus:border-transparent transition duration-200 ease-in-out text-gray-800 bg-white"
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 ease-in-out text-gray-800 bg-white"
                     >
                         <option value="all">Todos os Anos</option>
                     </select>
@@ -2956,7 +2956,7 @@ Concurso: 6740 - 27/05/2025 (Terça)
         function updateYearFilterOptions(draws) {
             const years = new Set(draws.map(draw => draw.year));
             filterYearSelect.innerHTML = '<option value="all">Todos os Anos</option>';
-            Array.from(years).sort().forEach(year => {
+            Array.from(years).sort((a, b) => b - a).forEach(year => { // Sort years in descending order
                 const option = document.createElement('option');
                 option.value = year;
                 option.textContent = year;
@@ -3025,7 +3025,7 @@ Concurso: 6740 - 27/05/2025 (Terça)
             currentLottery = lotterySelect.value;
             const data = lotteryData[currentLottery].data;
             const numbersPerDraw = lotteryData[currentLottery].numbersPerDraw;
-            const maxNumber = lotteryData[currentLottery].maxNumber;
+            // const maxNumber = lotteryData[currentLottery].maxNumber; // Not directly used here, but good to keep in mind
 
             pastDrawsTextarea.value = data;
             errorMessageDiv.textContent = '';
